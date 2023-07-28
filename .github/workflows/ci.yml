@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build Image
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Install QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: install buildx
+        uses: docker/setup-buildx-action@v2
+      - name: build the image
+        run: |
+          ls -l
+          ls docker/
+          docker buildx build \
+            --tag saethlin/crates-build-env:latest \
+            --platform linux/amd64,linux/arm64 \
+            -f docker/Dockerfile.base docker/
