@@ -775,7 +775,7 @@ libvorbisfile3
 libvpx-dev
 libvtk9.1
 libwacom9
-libwacom-bin
+#libwacom-bin
 libwacom-common
 libwavpack1
 libwayland-bin
